@@ -13,6 +13,36 @@ return {
     end,
   },
 
+  {
+    "github/copilot.vim",
+    event = {"InsertEnter", "VeryLazy"},
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("toggleterm").setup({
+        size = function(term)
+          if term.direction == "horizontal" then
+            return vim.o.lines
+          elseif term.direction == "vertical" then
+            return vim.o.columns
+          end
+        end,
+        open_mapping = [[<C-j>]],
+        direction = "float",
+        float_opts = {
+          border = "none",
+          width = function() return vim.o.columns end,
+          height = function() return vim.o.lines - 10 end,
+        },
+        start_in_insert = true
+      })
+    end,
+  }
+
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
