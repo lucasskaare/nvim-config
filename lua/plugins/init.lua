@@ -36,7 +36,7 @@ return {
         float_opts = {
           border = "none",
           width = function() return vim.o.columns end,
-          height = function() return vim.o.lines - 10 end,
+          height = function() return vim.o.lines end,
         },
         start_in_insert = true
       })
